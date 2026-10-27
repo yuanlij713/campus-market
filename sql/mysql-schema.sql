@@ -120,5 +120,5 @@ CREATE TABLE IF NOT EXISTS announcement (
 
 -- 初始管理员：admin / admin123
 INSERT INTO user(username,password,salt,nickname,avatar,student_id,email,phone,campus,role,status,verified,created_at)
-SELECT 'admin','1af1683a04d4ba5674846d1fe20210ea0988f64b2acd3bedd57e1a1d7aec8416','c8f3a1','平台管理员','','ADMIN001','admin@campus.edu.cn','','东校区',1,0,1,NOW()
+SELECT 'admin','1af1683a04d4ba5674846d1fe20210ea0988f64b2acd3bedd57e1a1d7aec8416','c8f3a1','平台管理员','','ADMIN001','admin@campus.edu.cn','','九站校区',1,0,1,NOW()
 FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='admin');

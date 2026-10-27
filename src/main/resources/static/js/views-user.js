@@ -1,7 +1,7 @@
 /* 用户端视图组件，挂载到全局 UserViews */
 (function () {
   'use strict';
-  var CAMPUSES = ['东校区', '西校区', '南校区', '北校区'];
+  var CAMPUSES = ['九站校区', '左家校区'];
   var CAT_ICONS = ['Goods', 'Reading', 'Headset', 'Bicycle', 'Basketball', 'Notebook', 'Watch', 'Box', 'Present', 'ShoppingBag'];
   var GRADS = [
     'linear-gradient(135deg,#667eea 0%,#764ba2 100%)',
@@ -263,7 +263,7 @@
       '  <el-dialog v-model="buyDlg" title="确认下单" width="420px">',
       '    <el-form label-width="90px">',
       '      <el-form-item label="数量"><el-input-number v-model="buyForm.quantity" :min="1" :max="p ? p.stock : 1"></el-input-number></el-form-item>',
-      '      <el-form-item label="交易地点"><el-input v-model="buyForm.meetLocation" placeholder="如：东校区图书馆门口"></el-input></el-form-item>',
+      '      <el-form-item label="交易地点"><el-input v-model="buyForm.meetLocation" placeholder="如：九站校区图书馆门口"></el-input></el-form-item>',
       '      <el-form-item label="备注"><el-input v-model="buyForm.remark" type="textarea" :rows="2"></el-input></el-form-item>',
       '    </el-form>',
       '    <template #footer>',
