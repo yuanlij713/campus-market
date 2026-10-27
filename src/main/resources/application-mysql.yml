@@ -1,0 +1,22 @@
+# 使用 MySQL 8.0 时：先执行 sql/mysql-schema.sql 建库建表，
+# 再以 -Dspring.profiles.active=mysql 启动，并修改下方连接信息。
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/campus_market?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  sql:
+    init:
+      mode: never
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+app:
+  upload-dir: uploads
+  token-expire-hours: 168
