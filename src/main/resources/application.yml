@@ -25,7 +25,7 @@ spring:
     resources:
       cache:
         cachecontrol:
-          max-age: 3600
+          max-age: 0
 
 mybatis:
   configuration:
