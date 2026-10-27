@@ -1,22 +1,20 @@
 @echo off
-chcp 65001 >nul
-title æ ¡å›­äºŒæ‰‹äº¤æ˜“å¹³å°
+title Ğ£Ô°¶şÊÖ½»Ò×Æ½Ì¨
 cd /d %~dp0
 
 where java >nul 2>nul
 if %errorlevel% neq 0 (
-  echo [é”™è¯¯] æœªæ£€æµ‹åˆ° Javaï¼Œè¯·å…ˆå®‰è£… JDK 17 æˆ–æ›´é«˜ç‰ˆæœ¬ã€‚
+  echo [´íÎó] Î´¼ì²âµ½ Java£¬ÇëÏÈ°²×° JDK 17 »ò¸ü¸ß°æ±¾¡£
   pause
   exit /b 1
 )
 
 if exist target\campus-market-1.0.0.jar (
-  echo æ­£åœ¨å¯åŠ¨æ ¡å›­äºŒæ‰‹äº¤æ˜“å¹³å°...
+  echo ÕıÔÚÆô¶¯Ğ£Ô°¶şÊÖ½»Ò×Æ½Ì¨...
   start "" http://localhost:8080
   java -jar target\campus-market-1.0.0.jar
 ) else (
-  echo æœªæ‰¾åˆ°æ‰“åŒ…äº§ç‰©ï¼Œè¯·å…ˆæ‰§è¡Œæ„å»ºå‘½ä»¤ï¼š
+  echo Î´ÕÒµ½´ò°ü²úÎï£¬ÇëÏÈÖ´ĞĞ¹¹½¨ÃüÁî£º
   echo   mvn -s settings-aliyun.xml -DskipTests package
-  echo æˆ–ç›´æ¥è¿è¡Œ mvn -s settings-aliyun.xml spring-boot:run
   pause
 )
