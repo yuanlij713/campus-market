@@ -5,16 +5,16 @@ SELECT 'admin','1af1683a04d4ba5674846d1fe20210ea0988f64b2acd3bedd57e1a1d7aec8416
 WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='admin');
 
 INSERT INTO user(username,password,salt,nickname,avatar,student_id,email,phone,campus,role,status,verified,created_at)
-SELECT 'zhangsan','fec7b32d08c1a57b1ec93d26515a73d4cd816748d8cfc1eef952491840eb03a8','d9e2b4','龙艺航','/img/seed/avatar1.svg','2023010101','zhangsan@campus.edu.cn','13800000001','九站校区',0,0,1,NOW()
-WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='zhangsan');
+SELECT 'longyihang','fec7b32d08c1a57b1ec93d26515a73d4cd816748d8cfc1eef952491840eb03a8','d9e2b4','龙艺航','/img/seed/avatar1.svg','2023010101','longyihang@campus.edu.cn','13800000001','九站校区',0,0,1,NOW()
+WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='longyihang');
 
 INSERT INTO user(username,password,salt,nickname,avatar,student_id,email,phone,campus,role,status,verified,created_at)
-SELECT 'lisi','fec7b32d08c1a57b1ec93d26515a73d4cd816748d8cfc1eef952491840eb03a8','d9e2b4','黄贺俊','/img/seed/avatar2.svg','2023010102','lisi@campus.edu.cn','13800000002','左家校区',0,0,1,NOW()
-WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='lisi');
+SELECT 'huanghejun','fec7b32d08c1a57b1ec93d26515a73d4cd816748d8cfc1eef952491840eb03a8','d9e2b4','黄贺俊','/img/seed/avatar2.svg','2023010102','huanghejun@campus.edu.cn','13800000002','左家校区',0,0,1,NOW()
+WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='huanghejun');
 
 INSERT INTO user(username,password,salt,nickname,avatar,student_id,email,phone,campus,role,status,verified,created_at)
-SELECT 'wangwu','fec7b32d08c1a57b1ec93d26515a73d4cd816748d8cfc1eef952491840eb03a8','d9e2b4','梁俊嘉','/img/seed/avatar3.svg','2023010103','wangwu@campus.edu.cn','13800000003','九站校区',0,0,1,NOW()
-WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='wangwu');
+SELECT 'liangjunjia','fec7b32d08c1a57b1ec93d26515a73d4cd816748d8cfc1eef952491840eb03a8','d9e2b4','梁俊嘉','/img/seed/avatar3.svg','2023010103','liangjunjia@campus.edu.cn','13800000003','九站校区',0,0,1,NOW()
+WHERE NOT EXISTS (SELECT 1 FROM user WHERE username='liangjunjia');
 
 INSERT INTO category(name,parent_id,sort) SELECT '教材书籍',0,1 WHERE NOT EXISTS (SELECT 1 FROM category WHERE name='教材书籍');
 INSERT INTO category(name,parent_id,sort) SELECT '数码电子',0,2 WHERE NOT EXISTS (SELECT 1 FROM category WHERE name='数码电子');
