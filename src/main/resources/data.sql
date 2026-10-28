@@ -35,30 +35,30 @@ WHERE NOT EXISTS (SELECT 1 FROM announcement WHERE title='交易安全提示');
 
 INSERT INTO product(user_id,title,description,price,original_price,category_id,campus,images,stock,status,views,created_at,updated_at)
 SELECT 2,'高等数学（同济第七版）上下册','八成新，笔记工整，适合大一新生，附赠习题解答。',25.00,59.00,
- (SELECT id FROM category WHERE name='教材书籍' LIMIT 1),'九站校区','/img/seed/book.svg',1,1,32,NOW(),NOW()
+ (SELECT id FROM category WHERE name='教材书籍' LIMIT 1),'九站校区','/img/seed/book.jpg',1,1,32,NOW(),NOW()
 WHERE NOT EXISTS (SELECT 1 FROM product WHERE title='高等数学（同济第七版）上下册');
 
 INSERT INTO product(user_id,title,description,price,original_price,category_id,campus,images,stock,status,views,created_at,updated_at)
 SELECT 3,'蓝牙耳机 九成新','音质良好，续航约6小时，附充电仓和数据线。',68.00,199.00,
- (SELECT id FROM category WHERE name='数码电子' LIMIT 1),'左家校区','/img/seed/earphone.svg',1,1,57,NOW(),NOW()
+ (SELECT id FROM category WHERE name='数码电子' LIMIT 1),'左家校区','/img/seed/earphone.jpg',1,1,57,NOW(),NOW()
 WHERE NOT EXISTS (SELECT 1 FROM product WHERE title='蓝牙耳机 九成新');
 
 INSERT INTO product(user_id,title,description,price,original_price,category_id,campus,images,stock,status,views,created_at,updated_at)
 SELECT 2,'宿舍折叠小桌板','床上学习神器，可折叠收纳，桌面无划痕。',15.00,45.00,
- (SELECT id FROM category WHERE name='生活用品' LIMIT 1),'九站校区','/img/seed/desk.svg',2,1,21,NOW(),NOW()
+ (SELECT id FROM category WHERE name='生活用品' LIMIT 1),'九站校区','/img/seed/desk.jpg',2,1,21,NOW(),NOW()
 WHERE NOT EXISTS (SELECT 1 FROM product WHERE title='宿舍折叠小桌板');
 
 INSERT INTO product(user_id,title,description,price,original_price,category_id,campus,images,stock,status,views,created_at,updated_at)
 SELECT 4,'山地自行车 可小刀','骑行两年，变速顺畅，刹车灵敏，送车锁和打气筒。',320.00,899.00,
- (SELECT id FROM category WHERE name='代步工具' LIMIT 1),'九站校区','/img/seed/bike.svg',1,1,88,NOW(),NOW()
+ (SELECT id FROM category WHERE name='代步工具' LIMIT 1),'九站校区','/img/seed/bike.jpg',1,1,88,NOW(),NOW()
 WHERE NOT EXISTS (SELECT 1 FROM product WHERE title='山地自行车 可小刀');
 
 INSERT INTO product(user_id,title,description,price,original_price,category_id,campus,images,stock,status,views,created_at,updated_at)
 SELECT 3,'篮球 斯伯丁7号球','室外场打过几次，弹性好，送气针网兜。',35.00,129.00,
- (SELECT id FROM category WHERE name='运动户外' LIMIT 1),'左家校区','/img/seed/ball.svg',1,1,15,NOW(),NOW()
+ (SELECT id FROM category WHERE name='运动户外' LIMIT 1),'左家校区','/img/seed/ball.jpg',1,1,15,NOW(),NOW()
 WHERE NOT EXISTS (SELECT 1 FROM product WHERE title='篮球 斯伯丁7号球');
 
 INSERT INTO product(user_id,title,description,price,original_price,category_id,campus,images,stock,status,views,created_at,updated_at)
 SELECT 4,'考研英语真题全套','全新未拆封，含近15年真题及解析。',40.00,88.00,
- (SELECT id FROM category WHERE name='教材书籍' LIMIT 1),'九站校区','/img/seed/book2.svg',1,0,3,NOW(),NOW()
+ (SELECT id FROM category WHERE name='教材书籍' LIMIT 1),'九站校区','/img/seed/book2.jpg',1,0,3,NOW(),NOW()
 WHERE NOT EXISTS (SELECT 1 FROM product WHERE title='考研英语真题全套');
