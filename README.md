@@ -40,6 +40,19 @@ Windows 下也可直接双击 `run.bat`。
 | huanghejun | 123456 | 学生（左家校区） |
 | liangjunjia | 123456 | 学生（九站校区） |
 
+## 打包为 Windows 免安装程序
+
+```powershell
+powershell -ExecutionPolicy Bypass -File package-windows.ps1
+```
+
+脚本依次完成：Maven 打包 → 生成程序图标 → jpackage 打包（内置 Java 运行环境）→ 压缩分发包。产物：
+
+- `release/CampusMarket/CampusMarket.exe`：双击启动，自动打开浏览器 http://localhost:8080
+- `release/CampusMarket-1.0.0-win64.zip`：分发包，目标电脑无需安装 JDK，解压后双击 exe 即可运行
+
+首次启动会在程序目录生成 `data`（H2 数据库）和 `uploads`（上传图片）两个目录，备份或换电脑时复制整个文件夹即可。
+
 ## 切换 MySQL 8.0
 
 ```bash
@@ -71,6 +84,7 @@ campus-market/
 ├── pom.xml                  # Maven 配置
 ├── settings-aliyun.xml      # 阿里云镜像加速配置
 ├── run.bat                  # Windows 一键启动
+├── package-windows.ps1      # 打包 Windows 免安装版（内置 JRE）
 ├── sql/mysql-schema.sql     # MySQL 8.0 建库脚本
 ├── docs/                    # 设计文档、接口文档、操作手册
 ├── src/main/java/com/campus/market/

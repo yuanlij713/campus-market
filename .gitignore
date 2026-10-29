@@ -1,6 +1,7 @@
 target/
 data/
 uploads/
+release/
 *.class
 *.log
 .idea/
