@@ -32,8 +32,8 @@ public class FileController {
         String ext = original.contains(".") ? original.substring(original.lastIndexOf('.') + 1).toLowerCase() : "";
         if (!ALLOWED.contains(ext)) throw new IllegalArgumentException("仅支持图片文件");
         String name = UUID.randomUUID().toString().replace("-", "") + "." + ext;
-        File dir = new File(uploadDir);
-        if (!dir.exists()) dir.mkdirs();
+        File dir = new File(uploadDir).getAbsoluteFile();
+        if (!dir.exists() && !dir.mkdirs()) throw new IOException("无法创建上传目录");
         file.transferTo(new File(dir, name));
         return Result.ok("/uploads/" + name);
     }
