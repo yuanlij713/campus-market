@@ -93,6 +93,13 @@ $bw.Write($pngBytes); $bw.Flush()
 $bw.Dispose(); $ms.Dispose()
 
 Write-Host "[4/6] jpackage 生成免安装程序 ..."
+# 先备份已有数据，避免重新打包时丢失用户数据
+$dataBak = Join-Path $root "target\release-data"
+$uploadsBak = Join-Path $root "target\release-uploads"
+Remove-Item -Recurse -Force $dataBak, $uploadsBak -ErrorAction SilentlyContinue
+if (Test-Path (Join-Path $outDir "data")) { Copy-Item (Join-Path $outDir "data") $dataBak -Recurse -Force }
+if (Test-Path (Join-Path $outDir "uploads")) { Copy-Item (Join-Path $outDir "uploads") $uploadsBak -Recurse -Force }
+
 Remove-Item -Recurse -Force $outDir -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $release | Out-Null
 & $jpackage --type app-image `
@@ -138,7 +145,13 @@ data 和 uploads 两个目录保存了全部数据。备份或换电脑时，把
 Write-Host "[6/6] 压缩为 zip ..."
 $zip = Join-Path $release "$appName-$version-win64.zip"
 Remove-Item $zip -Force -ErrorAction SilentlyContinue
+# 此时目录内没有 data/uploads，打出的分发包是干净的初始数据
 Compress-Archive -Path $outDir -DestinationPath $zip -CompressionLevel Optimal
+
+# 恢复原有数据
+if (Test-Path $dataBak) { Copy-Item $dataBak (Join-Path $outDir "data") -Recurse -Force }
+if (Test-Path $uploadsBak) { Copy-Item $uploadsBak (Join-Path $outDir "uploads") -Recurse -Force }
+Remove-Item -Recurse -Force $dataBak, $uploadsBak -ErrorAction SilentlyContinue
 
 Write-Host "完成：$outDir"
 Write-Host "可执行文件：$(Join-Path $outDir "$appName.exe")"

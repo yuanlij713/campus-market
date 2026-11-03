@@ -10,7 +10,7 @@
     throw e;
   }
 
-  function request(method, url, data, isForm) {
+  function request(method, url, data, isForm, silentAuth) {
     var opts = { method: method, headers: {} };
     var token = localStorage.getItem(TOKEN_KEY);
     if (token) opts.headers['Authorization'] = token;
@@ -31,6 +31,12 @@
           store.token = null;
           store.user = null;
           store.unread = 0;
+          /* silentAuth：启动时校验旧令牌，失效不弹提示、不跳转 */
+          if (silentAuth) {
+            var e = new Error('unauthorized');
+            e.__shown = true;
+            throw e;
+          }
           if (location.hash !== '#/login') location.hash = '#/login';
           return fail(body.msg || '请先登录');
         }
@@ -46,7 +52,7 @@
   }
 
   var api = {
-    get: function (url, params) {
+    get: function (url, params, silentAuth) {
       if (params) {
         var qs = Object.keys(params)
           .filter(function (k) { return params[k] !== undefined && params[k] !== null && params[k] !== ''; })
@@ -54,7 +60,7 @@
           .join('&');
         if (qs) url += (url.indexOf('?') >= 0 ? '&' : '?') + qs;
       }
-      return request('GET', url);
+      return request('GET', url, undefined, false, silentAuth);
     },
     post: function (url, data) { return request('POST', url, data || {}); },
     put: function (url, data) { return request('PUT', url, data || {}); },
@@ -79,7 +85,7 @@
     loadUser: function () {
       if (!this.token) return Promise.resolve(null);
       var self = this;
-      return api.get('/api/auth/me').then(function (u) {
+      return api.get('/api/auth/me', null, true).then(function (u) {
         self.user = u;
         return u;
       }).catch(function () { return null; });
