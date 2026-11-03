@@ -613,7 +613,7 @@
       '    <div class="chat-header">{{ other ? other.name : \'请选择会话\' }}</div>',
       '    <div class="msg-list" ref="msgList">',
       '      <div v-for="m in messages" :key="m.id" class="msg-row" :class="{ me: m.senderId === myId }">',
-      '        <div>',
+      '        <div class="msg-item">',
       '          <div class="msg-bubble">{{ m.content }}</div>',
       '          <div class="msg-time">{{ fmt(m.createdAt) }}</div>',
       '        </div>',
